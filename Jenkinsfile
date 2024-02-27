@@ -19,7 +19,7 @@ pipeline{
         stage('test'){
             agent any
 
-             steps{
+            steps{
                    scripts{
                        echo "${env.TEST}"
                          }
