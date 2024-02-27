@@ -19,10 +19,9 @@ pipeline{
             agent any
 
              steps{
-                   sh '''
-                        sleep 5
-                   echo "$TEST1" 
-                '''
+                   scripts{
+                    echo "${env.TEST}"
+                    }
             }
            
             }
