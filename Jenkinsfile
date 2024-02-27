@@ -20,9 +20,9 @@ pipeline{
             agent any
 
             steps{
-                   scripts{
+                   script{
                        echo "${env.TEST}"
-                         }
+                          }
             }
            
             }
