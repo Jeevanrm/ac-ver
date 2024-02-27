@@ -1,5 +1,9 @@
 pipeline{
     agent none
+    environment{
+            TEST="test value1"
+            TEST1="test value 2"
+              }
     stages{
         stage('Build'){
             agent {
@@ -7,7 +11,7 @@ pipeline{
                    }
             steps{ 
                     sh ''' sleep 5
-                    echo "========executing A========" 
+                    echo "$TEST" 
                 '''
             }
             }
@@ -17,7 +21,7 @@ pipeline{
              steps{
                    sh '''
                         sleep 5
-                   echo "========executing A========" 
+                   echo "$TEST1" 
                 '''
             }
            
