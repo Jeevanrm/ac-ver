@@ -12,7 +12,11 @@ pipeline{
             }
             }
         stage('test'){
-            steps{
+            agent {
+                   label "slave1"
+                   }
+
+             steps{
                    sh '''
                         sleep 5
                    echo "========executing A========" 
