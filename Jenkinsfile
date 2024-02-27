@@ -1,14 +1,14 @@
 pipeline{
     agent any
     stages{
-        stage("Build"){
+        stage('Build'){
             steps{
                 ''' 
                     sh 'sleep 5'
                     echo "========executing A========" 
                 '''
             }
-        stage("test"){
+        stage('test'){
             steps{
                 '''
                    sh 'sleep 5'
