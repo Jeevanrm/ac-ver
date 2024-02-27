@@ -24,10 +24,10 @@ pipeline{
             agent any
 
             steps{
-                   script{
+                 
                        echo "${params.PERSON}"
                        echo "${params.BIOGRAPHY}"
-                          }
+                       
             }
            
             }
