@@ -12,9 +12,7 @@ pipeline{
             }
             }
         stage('test'){
-            agent {
-                   label "slave1"
-                   }
+            agent any
 
              steps{
                    sh '''
