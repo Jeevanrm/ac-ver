@@ -6,6 +6,7 @@ pipeline{
               }
     parameters{
              string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+             text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
               }
     stages{
         stage('Build'){
@@ -25,6 +26,7 @@ pipeline{
             steps{
                    script{
                        echo "${params.PERSON}"
+                       echo "${params.BIOGRAPHY}"
                           }
             }
            
