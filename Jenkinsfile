@@ -4,9 +4,9 @@ pipeline{
             TEST="test value1"
             TEST1="test value 2"
               }
-    parameter{
+    parameters{
              string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-             }
+              }
     stages{
         stage('Build'){
             agent {
