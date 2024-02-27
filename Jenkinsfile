@@ -11,7 +11,7 @@ pipeline{
         stage('test'){
             steps{
                    sh '''
-                        'sleep 5'
+                        sleep 5
                    echo "========executing A========" 
                 '''
             }
