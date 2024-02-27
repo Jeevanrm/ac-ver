@@ -7,6 +7,7 @@ pipeline{
                     echo "========executing A========" 
                 '''
             }
+            }
         stage('test'){
             steps{
                    sh '''
@@ -18,4 +19,4 @@ pipeline{
             }
         }
     }
-}
+
