@@ -15,13 +15,14 @@ pipeline{
                 '''
             }
             }
+
         stage('test'){
             agent any
 
              steps{
                    scripts{
-                    echo "${env.TEST}"
-                    }
+                       echo "${env.TEST}"
+                         }
             }
            
             }
