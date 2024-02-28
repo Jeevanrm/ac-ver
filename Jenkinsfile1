@@ -2,7 +2,7 @@ pipeline{
     agent none
     triggers{
         cron('*/59 * * * *')
-    }
+            }
     environment{
             TEST="test value1"
             TEST1="test value 2"
