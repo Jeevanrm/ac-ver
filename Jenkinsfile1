@@ -28,7 +28,9 @@ pipeline{
             agent any
 
             steps{
-                sh 'sleep 5'
+                sh ''' ls -lrt
+                  mvn clean install 
+                '''
                        
             }
            
