@@ -1,14 +1,14 @@
 pipeline{
-    agent none
+    agent any
 
     stages{
         stage('checkout'){
-           agent any
-           steps{
+             agent any
+             steps{
                  checkout([$class: 'GitSCM', branches: [[name: '*/main']],
                  userRemoteConfigs: [[url: 'https://github.com/Jeevanrm/jaintpapplications.git']]])
-                }
-                }
+            }
+            }
         
 
 
