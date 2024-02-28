@@ -3,7 +3,7 @@ pipeline{
 
     stages{
         stage('checkout'){
-             agent any
+
              steps{
                  checkout([$class: 'GitSCM', branches: [[name: '*/main']],
                  userRemoteConfigs: [[url: 'https://github.com/Jeevanrm/jaintpapplications.git']]])
@@ -14,9 +14,7 @@ pipeline{
 
 
          stage('Build'){
-            agent {
-                   label "slave1"
-                   }
+         
             steps{ 
                     sh ''' ls -lrt
                     echo "Hello" 
@@ -25,7 +23,6 @@ pipeline{
             }
 
          stage('test'){
-            agent any
 
             steps{
                 sh ''' ls -lrt
