@@ -5,7 +5,7 @@ pipeline{
         stage('checkout'){
            agent any
            steps{
-                 checkout([$class: 'GitSCM', branches: [[name: '*/master']],
+                 checkout([$class: 'GitSCM', branches: [[name: '*/main']],
                  userRemoteConfigs: [[url: 'https://github.com/Jeevanrm/jaintpapplications.git']]])
                 }
                 }
@@ -29,7 +29,7 @@ pipeline{
 
             steps{
                 sh ''' ls -lrt
-                  cd java-maven-calculator-web-app/
+                  cd java-maven-calculator-web-app
                   sudo mvn clean install 
                 '''
                        
