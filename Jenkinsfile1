@@ -29,7 +29,7 @@ pipeline{
 
             steps{
                 sh ''' ls -lrt
-                  mvn clean install 
+                  sudo mvn clean install 
                 '''
                        
             }
