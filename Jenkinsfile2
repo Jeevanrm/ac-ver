@@ -25,11 +25,13 @@ pipeline{
          stage('test'){
 
             steps{
+                catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE'){ 
                 sh ''' ls -lrt
                   sleep 5
                   exit 1
                    
                 '''
+                }
                        
             }
            
