@@ -1,0 +1,50 @@
+pipeline{
+    agent any
+
+    stages{
+        stage('checkout'){
+
+             steps{
+                 checkout([$class: 'GitSCM', branches: [[name: '*/master']],
+                 userRemoteConfigs: [[url: 'https://github.com/Jeevanrm/hello-world.git']]])
+            }
+            }
+        
+
+
+
+         stage('Build'){
+         
+            steps{ 
+                    sh ''' ls -lrt
+                    echo "Hello" 
+                '''
+            }
+            }
+
+         stage('test'){
+
+            steps{
+                sh ''' ls -lrt
+                  sleep 5
+                  exit 1
+                   
+                '''
+                       
+            }
+           
+            }
+            stage('deploy'){
+
+            steps{
+                sh ''' ls -lrt
+
+                '''
+
+            }
+
+            }
+
+        }
+    }
+
