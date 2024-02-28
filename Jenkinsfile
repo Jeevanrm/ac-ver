@@ -1,5 +1,7 @@
 pipeline{
     agent none
+     
+
     environment{
             TEST="test value1"
             TEST1="test value 2"
