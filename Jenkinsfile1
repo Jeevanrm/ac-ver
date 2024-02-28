@@ -27,6 +27,6 @@ pipeline{
                        echo "${env.TEST}"
                          }
            }
-        }
+           }
     }
 }
