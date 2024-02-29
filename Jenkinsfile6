@@ -3,14 +3,12 @@ pipeline{
        stages{
           stage('user'){
              steps{
-
-             
-              withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 echo "$PASSWORD"
                   sh ' echo $PASSWORD'
                 }
              }
-             stage('secret text'){
+           stage('secret text'){
              steps{
                 withCredentials([string(credentialsId: 'SECRET', variable: 'TOKEN')]) {
                  
