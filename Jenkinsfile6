@@ -1,6 +1,7 @@
 pipeline{
     agent any
        stages{
+         parallel{
           stage('user'){
              steps{
                 withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -18,11 +19,12 @@ pipeline{
                 }
                 }
             }
+         }
             stage('secret file'){
              steps{
                 withCredentials([file(credentialsId: 'SECRETFILE', variable: 'FILE')]) {
                 echo "$FILE"
-                  sh ''' ssh -t $FILE ubuntu@13.235.135.105 uname -u 
+                  sh ''' ssh -T $FILE ubuntu@13.235.135.105 uname -u 
                      '''
                 }
              }
