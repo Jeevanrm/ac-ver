@@ -1,7 +1,10 @@
 pipeline{
-    agent any
+    agent None
        stages{
           stage('ssh'){
+            agent{
+                label 'slave1'
+            }
             steps{
                 withCredentials([sshUserPrivateKey(credentialsId: "2c1f1d8c-08a2-4412-99e1-1a650ca0f51a", keyFileVariable: 'keyfile')]) {
                   sh 'sudo touch /home/ubuntu/fullssh.txt'
