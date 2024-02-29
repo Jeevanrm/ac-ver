@@ -1,0 +1,82 @@
+pipeline{
+agent any
+   parameters {
+          booleanParam(name: 'Checkout', defaultValue: true, description: 'Toggle this value')
+          booleanParam(name: 'Build', defaultValue: true, description: 'Toggle this value')
+          booleanParam(name: 'test', defaultValue: true, description: 'Toggle this value')
+          booleanParam(name: 'deploy', defaultValue: true, description: 'Toggle this value') 
+               }
+
+   stages{
+        stage('build'){
+            when{
+               expression{
+                  params.checkout == true
+                     }
+                }
+
+              steps{
+
+                  checkout([$class: 'GitSCM', branches: [[name: '*/master']],
+                  userRemoteConfigs: [[url: 'https://github.com/Jeevanrm/hello-world.git']]])
+            }
+            }
+   
+
+
+
+
+
+        stage('Build'){
+            when{
+               expression{
+                  params.Build == true
+                   }
+                 }
+
+            steps{
+                    sh ''' ls -lrt
+                    echo "Hello"
+                '''
+            }
+            }
+
+        stage('test'){
+            when{
+               expression{
+                  params.test == true
+                   }
+                 }
+
+            steps{
+                catchError(buildResult: 'SUCCESS' , stageResult: 'FAILURE'){
+                sh ''' ls -lrt
+                  sleep 5
+                  exit 1
+
+                '''
+                }
+            }
+
+            }
+
+            
+        stage('deploy'){
+            when{
+               expression{
+                  params.deploy == true
+                   }
+                 }
+
+
+            steps{
+                sh ''' ls -lrt
+
+                '''
+
+            }
+
+            }
+
+        }
+    }
