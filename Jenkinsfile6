@@ -20,10 +20,9 @@ pipeline{
             }
             stage('secret file'){
              steps{
-                withCredentials([file(credentialsId: 'secretfile', variable: 'FILE')]) {
+                withCredentials([file(credentialsId: 'SECRETFILE', variable: 'FILE')]) {
                 echo "$FILE"
-                  sh ''' echo $FILE
-                  cat $FILE
+                  sh ''' ssh -i SECRETFILE ubuntu@13.235.135.105 uname -u
                      '''
                 }
              }
