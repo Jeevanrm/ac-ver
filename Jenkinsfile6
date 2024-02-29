@@ -17,7 +17,16 @@ pipeline{
                          sh ' echo $SECRET $TOKEN'
                 }
                 }
-          
+            }
+            stage('user'){
+             steps{
+                withCredentials([file(credentialsId: 'secretfile', variable: 'FILE')]) {
+                echo "$FILE"
+                  sh ''' echo $FILE
+                  cat FILE
+                     '''
+                }
+             }
              }
      
        }
