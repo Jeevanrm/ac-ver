@@ -20,7 +20,7 @@ pipeline{
                       }
                   }
                   }
-                }
+                
                }
          }
             stage('secret file'){
@@ -35,6 +35,6 @@ pipeline{
      
        }
 
-       
+}       
 
 
