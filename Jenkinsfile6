@@ -1,7 +1,7 @@
 pipeline{
     agent any
        stages{
-          stage('checkout'){
+          stage('user'){
              steps{
 
              
@@ -10,8 +10,19 @@ pipeline{
                   sh ' echo $PASSWORD'
                 }
              }
+             stage('secret text'){
+             steps{
+                withCredentials([string(credentialsId: 'SECRET', variable: 'TOKEN')]) {
+                 
+                         echo "$TOKEN"
+                         sh ' echo $SECRET $TOKEN'
+                }
+                }
+          
+             }
      
        }
+
        }
 
 
