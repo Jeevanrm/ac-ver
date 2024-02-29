@@ -23,7 +23,7 @@ pipeline{
                 withCredentials([file(credentialsId: 'secretfile', variable: 'FILE')]) {
                 echo "$FILE"
                   sh ''' echo $FILE
-                  cat FILE
+                  cat $FILE
                      '''
                 }
              }
