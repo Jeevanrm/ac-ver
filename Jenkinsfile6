@@ -18,7 +18,7 @@ pipeline{
                 }
                 }
             }
-            stage('user'){
+            stage('secret file'){
              steps{
                 withCredentials([file(credentialsId: 'secretfile', variable: 'FILE')]) {
                 echo "$FILE"
