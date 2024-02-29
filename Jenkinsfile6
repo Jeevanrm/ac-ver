@@ -1,24 +1,21 @@
 pipeline{
     agent any
        stages{
-         parallel{
+         
           stage('user'){
              steps{
-                withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+               parallel{
+                a:withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 echo "$PASSWORD"
                   sh ' echo $PASSWORD'
-                }
-             }
-             }
-           stage('secret text'){
-             steps{
-                withCredentials([string(credentialsId: 'SECRET', variable: 'TOKEN')]) {
+                        }            
+                b:withCredentials([string(credentialsId: 'SECRET', variable: 'TOKEN')]) {
                  
                          echo "$TOKEN"
                          sh ' echo $SECRET $TOKEN'
+                      }
                 }
-                }
-            }
+               }
          }
             stage('secret file'){
              steps{
