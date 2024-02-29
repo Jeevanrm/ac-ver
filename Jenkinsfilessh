@@ -4,7 +4,7 @@ pipeline{
           stage('ssh'){
             steps{
                 withCredentials([sshUserPrivateKey(credentialsId: "2c1f1d8c-08a2-4412-99e1-1a650ca0f51a", keyFileVariable: 'keyfile')]) {
-                  sh 'scp -i ${keyfile} do sth here'
+                  sh 'echo $USER'
                  
              }
             }
