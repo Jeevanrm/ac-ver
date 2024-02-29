@@ -1,0 +1,18 @@
+pipeline{
+    agent any
+       stages{
+          stage('checkout'){
+             steps{
+
+             
+              withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                echo "$USERNAME"
+                  sh ' echo $USERNAME'
+                }
+             }
+     
+       }
+       }
+
+
+}
