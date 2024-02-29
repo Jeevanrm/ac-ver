@@ -2,18 +2,24 @@ pipeline{
     agent any
        stages{
          
-          stage('user'){
-             steps{
-               parallel{
-                a:withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                echo "$PASSWORD"
-                  sh ' echo $PASSWORD'
-                        }            
-                b:withCredentials([string(credentialsId: 'SECRET', variable: 'TOKEN')]) {
-                 
-                         echo "$TOKEN"
+          stage('multiple'){
+            parallel{
+              stage('one'){
+                steps{
+                  withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                   echo "$PASSWORD"
+                      sh ' echo $PASSWORD'
+                        }
+                     }
+                 }
+               stage('onemore'){
+                  steps{              
+                       withCredentials([string(credentialsId: 'SECRET', variable: 'TOKEN')]) {
+                        echo "$TOKEN"
                          sh ' echo $SECRET $TOKEN'
                       }
+                  }
+                  }
                 }
                }
          }
@@ -29,6 +35,6 @@ pipeline{
      
        }
 
-       }
+       
 
 
