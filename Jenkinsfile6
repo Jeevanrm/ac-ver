@@ -22,7 +22,7 @@ pipeline{
              steps{
                 withCredentials([file(credentialsId: 'SECRETFILE', variable: 'FILE')]) {
                 echo "$FILE"
-                  sh ''' ssh -tt $FILE ubuntu@13.235.135.105 uname -u 
+                  sh ''' ssh -t $FILE ubuntu@13.235.135.105 uname -u 
                      '''
                 }
              }
