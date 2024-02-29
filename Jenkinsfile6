@@ -7,7 +7,7 @@ pipeline{
              
               withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 echo "$PASSWORD"
-                  sh ' echo $USERNAME'
+                  sh ' echo $PASSWORD'
                 }
              }
      
