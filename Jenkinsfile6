@@ -8,6 +8,7 @@ pipeline{
                   sh ' echo $PASSWORD'
                 }
              }
+             }
            stage('secret text'){
              steps{
                 withCredentials([string(credentialsId: 'SECRET', variable: 'TOKEN')]) {
@@ -24,4 +25,3 @@ pipeline{
        }
 
 
-}
