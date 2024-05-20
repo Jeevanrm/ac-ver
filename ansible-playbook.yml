@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - name: git
+      apt:
+        name: git
+        state: present
+    - name: Stop instances
+      community.aws.ec2_instance:
+        instance_ids:
+          - i-034ace842f41ee8d2
+        state: stopped
+      tags:
+        - start
+~
