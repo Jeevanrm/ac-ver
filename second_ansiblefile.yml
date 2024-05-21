@@ -1,0 +1,15 @@
+---
+- hosts: dev
+  become: yes
+  connection: ssh
+  tasks:
+    - name: git
+      apt:
+        name: bc
+        state: absent
+      when: ansible_facts['distribution'] != 'Amazon'
+    - name: git
+      yum:
+        name: bc
+        state: present
+      when: ansible_facts['distribution'] == 'Amazon'
