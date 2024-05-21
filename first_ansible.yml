@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  user: ubuntu
+  become: yes
+  tasks:
+    - name: git
+      apt:
+       name: git
+       state: present
+    - name: check present working directory
+      command: 'pwd'
+      register: pwd_out
+    - name: debug
+      debug:
+        msg: the current working directory is "{{pwd_out.stdout}}"
